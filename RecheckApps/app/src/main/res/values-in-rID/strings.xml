@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recheck Apps</string>
+    <string name="new_title">Estimasi Baru</string>
+    <string name="add_item">Tambah Barang</string>
+    <string name="result_items">Hasil Barang</string>
+    <string name="checking_items">Cek Barang …</string>
+    <string name="name_estimation">Nama Estimasi</string>
+    <string name="input_price">Masukkan Harga</string>
+    <string name="select_items">Pilih Barang</string>
+</resources>
