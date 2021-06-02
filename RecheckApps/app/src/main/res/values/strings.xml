@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Recheck Apps</string>
+    <string name="new_title">New Estimation</string>
+    <string name="add_item">Add Item</string>
+    <string name="result_items">Result Items</string>
+    <string name="checking_items">Checking Items …</string>
+    <string name="name_estimation">Name Estimation</string>
+    <string name="input_price">Input Price</string>
+    <string name="select_items">Select Items</string>
+</resources>
