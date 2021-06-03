@@ -4,6 +4,7 @@
     <color name="blue_variant">#3357B2</color>
     <color name="red_warning">#FF0000</color>
     <color name="green_ok">#299A56</color>
+    <color name="white_back">#FBFBFB</color>
     <color name="grey">#F1F1F1</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
