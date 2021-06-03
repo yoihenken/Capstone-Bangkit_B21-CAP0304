@@ -33,10 +33,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/items_detail"/>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/items_detail" />
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
