@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.B21_CAP0304.RecheckApps.R
 import id.B21_CAP0304.RecheckApps.databinding.ItemsDetailBinding
-import id.B21_CAP0304.RecheckApps.model.DetailItems
-import kotlinx.android.synthetic.main.items_detail.view.*
+import id.B21_CAP0304.RecheckApps.model.ItemsDetail
 
 class MainAdapter(
-    private val listData : List<DetailItems>,
+    private val listData : List<ItemsDetail>,
     private val context : Context
 ) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 

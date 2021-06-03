@@ -3,13 +3,9 @@ package id.B21_CAP0304.RecheckApps.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.cardview.widget.CardView
-import androidx.core.view.marginBottom
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import id.B21_CAP0304.RecheckApps.R
 import id.B21_CAP0304.RecheckApps.databinding.ActivityMainBinding
-import id.B21_CAP0304.RecheckApps.model.DetailItems
+import id.B21_CAP0304.RecheckApps.model.ItemsDetail
 import id.B21_CAP0304.RecheckApps.ui.newes.NewesActivity
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         loadDummy()
     }
 
-    private fun recycleData(data: List<DetailItems>){
+    private fun recycleData(data: List<ItemsDetail>){
         binding.rvHistory.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = MainAdapter(data, this@MainActivity)
@@ -37,10 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadDummy(){
-        var data = listOf<DetailItems>(
-            DetailItems("Estimation 0", 2, "02/02/2021"),
-            DetailItems("Estimation 1", 4, "02/03/2021"),
-            DetailItems("Estimation 2", 6, "02/04/2021"),
+        var data = listOf<ItemsDetail>(
+            ItemsDetail("Estimation 0", 2, "02/02/2021"),
+            ItemsDetail("Estimation 1", 4, "02/03/2021"),
+            ItemsDetail("Estimation 2", 6, "02/04/2021"),
         )
 
         recycleData(data)
