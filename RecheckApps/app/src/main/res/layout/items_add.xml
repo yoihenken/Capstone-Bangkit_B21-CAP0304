@@ -52,17 +52,19 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/btn_delete"
-            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            style="@style/DeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:backgroundTint="@color/red_warning"
             app:icon="@drawable/ic_baseline_delete_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

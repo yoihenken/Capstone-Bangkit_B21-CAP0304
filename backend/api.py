@@ -12,19 +12,6 @@ bst = xgb.XGBClassifier()  # init model
 bst.load_model('overprice.bin')  # load data
 print("Loaded model from: overprice.bin")
 
-brands = ['Apple', 'Corsair', 'Olympus', 'Papago', 'Samsung', 'SanDisk', 'Sideclick', 'Sony', 'SoundDesign']
-items = [
-    '15.4 MacBook Pro with Touch Bar (Late 2016, Space Gray)',
-    'Corsair Vengeance LPX 16GB (2x8GB) DDR4 DRAM 3000MHz C15 Desktop Memory Kit - Black (CMK16GX4M2B3000C15)',
-    'GoSafe S30 1080p Dash Cam',
-    'Olympus TG-5 Waterproof Camera with 3-Inch LCD',
-    'Samsung - Adaptive Fast Charging Wall Charger - White',
-    'SanDisk Ultra II 1TB SATA III SSD - 2.5-Inch 7mm Height Solid State Drive - SDSSDHII-1T00-G25',
-    'Sideclick - Universal Remote Attachment for Roku® Streaming Players - Black',
-    'Sony - BC-TRX Battery Charger - Black',
-    'Sony HTST9 Soundbar with Wireless Subwoofer Bluetooth and Google Cast',
-    'iHome iBN43BC Bluetooth Stereo Dual Alarm FM Clock Radio and Speakerphone with USB Charging'
-]
 init_df = pd.DataFrame(columns=['prices.amountMax', 'prices.condition_NEW', 'brand_Apple',
        'brand_Corsair', 'brand_Olympus', 'brand_Papago', 'brand_Samsung',
        'brand_SanDisk', 'brand_Sideclick', 'brand_Sony', 'brand_Sound Design',
@@ -46,17 +33,55 @@ def hello_world():
 @app.route("/getItems", methods=["GET"])
 def getItems():
     response_json = {
-        "data": {
-            "brands" : brands,
-            "itemName" : items
-        }
+        "data": [
+            {
+                "itemName": "15.4 MacBook Pro with Touch Bar (Late 2016, Space Gray)",
+                "brand": "Apple"
+            },
+            {
+                "itemName": "Corsair Vengeance LPX 16GB (2x8GB) DDR4 DRAM 3000MHz C15 Desktop Memory Kit - Black (CMK16GX4M2B3000C15)",
+                "brand": "Corsair"
+            },
+            {
+                "itemName": "GoSafe S30 1080p Dash Cam",
+                "brand": "Papago"
+            },
+            {
+                "itemName": "Olympus TG-5 Waterproof Camera with 3-Inch LCD",
+                "brand": "Olympus"
+            },
+            {
+                "itemName": "Samsung - Adaptive Fast Charging Wall Charger - White",
+                "brand": "Samsung"
+            },
+            {
+                "itemName": "SanDisk Ultra II 1TB SATA III SSD - 2.5-Inch 7mm Height Solid State Drive - SDSSDHII-1T00-G25",
+                "brand": "SanDisk"
+            },
+            {
+                "itemName": "Sideclick - Universal Remote Attachment for Roku® Streaming Players - Black",
+                "brand": "Sideclick"
+            },
+            {
+                "itemName": "Sony - BC-TRX Battery Charger - Black",
+                "brand": "Sony"
+            },
+            {
+                "itemName": "Sony HTST9 Soundbar with Wireless Subwoofer Bluetooth and Google Cast",
+                "brand": "Sony"
+            },
+            {
+                "itemName": "iHome iBN43BC Bluetooth Stereo Dual Alarm FM Clock Radio and Speakerphone with USB Charging",
+                "brand": "Sound Design"
+            },
+        ]
     }
     return json.dumps(response_json)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    
     request_json = request.get_json()
+    res = []
 
     for i in request_json["data"]:
         predict_df = pd.DataFrame()
@@ -75,10 +100,12 @@ def predict():
         #predict
         try:
             predictions = bst.predict(predict_df)
+            predictions = predictions.tolist()
+            res.extend(predictions)
         except:
             print("prediction has failed.")
     response_json = {
-        "data": predictions
+        "data": res
     }
     return json.dumps(response_json)    
 
