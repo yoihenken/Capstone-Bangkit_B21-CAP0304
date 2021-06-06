@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadDummy(){
         var data = listOf<ItemsDetail>(
-            ItemsDetail("Estimation 0", 2, "02/02/2021"),
-            ItemsDetail("Estimation 1", 4, "02/03/2021"),
-            ItemsDetail("Estimation 2", 6, "02/04/2021"),
+            ItemsDetail(0, "Estimation 0", 2, "02/02/2021"),
+            ItemsDetail(1, "Estimation 1", 4, "02/03/2021"),
+            ItemsDetail(2, "Estimation 2", 6, "02/04/2021"),
         )
 
         recycleData(data)

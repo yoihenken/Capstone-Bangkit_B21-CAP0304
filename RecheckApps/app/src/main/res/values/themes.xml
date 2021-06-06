@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="background">@color/white_back</item>
+        <item name="tint">@color/black</item>
     </style>
 
     <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.ActionBar">
@@ -23,7 +25,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button">
+    <style name="DeleteButton" parent="Widget.MaterialComponents.Button">
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
@@ -31,5 +33,7 @@
         <item name="android:paddingRight">12dp</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
+        <item name="android:backgroundTint">@color/red_warning</item>
+        <item name="iconTint">@color/white</item>
     </style>
 </resources>
