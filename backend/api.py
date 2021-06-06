@@ -80,8 +80,8 @@ def getItems():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    
     request_json = request.get_json()
+    res = []
 
     for i in request_json["data"]:
         predict_df = pd.DataFrame()
@@ -100,10 +100,12 @@ def predict():
         #predict
         try:
             predictions = bst.predict(predict_df)
+            predictions = predictions.tolist()
+            res.extend(predictions)
         except:
             print("prediction has failed.")
     response_json = {
-        "data": predictions
+        "data": res
     }
     return json.dumps(response_json)    
 
