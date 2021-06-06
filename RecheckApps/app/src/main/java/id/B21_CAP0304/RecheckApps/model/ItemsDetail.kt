@@ -13,11 +13,11 @@ data class ItemsDetail(
     var id : Int? = null,
 
     @ColumnInfo(name = "title")
-    var title : String?,
+    var title : String? = null,
 
     @ColumnInfo(name = "count")
-    var count : Int?,
+    var count : Int? = null,
 
     @ColumnInfo(name = "date")
-    var date : String?
+    var date : String? = null
 ) : Parcelable

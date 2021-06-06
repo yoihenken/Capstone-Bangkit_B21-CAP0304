@@ -14,15 +14,15 @@ data class ItemsResult (
     var id : Int? = null,
 
     @ColumnInfo(name = "title")
-    var title : String?,
+    var title : String? = null,
 
     @ColumnInfo(name = "price")
-    var price : Int?,
+    var price : Int? = null,
 
     @ColumnInfo(name = "status")
-    var status: String?,
+    var status: String? = null,
 
     @ColumnInfo(name = "idEst")
-    var idEst: String?
+    var idEst: String? = null
 
 ) : Parcelable
