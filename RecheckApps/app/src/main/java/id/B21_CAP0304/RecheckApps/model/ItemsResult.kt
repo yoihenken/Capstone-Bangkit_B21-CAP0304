@@ -22,7 +22,7 @@ data class ItemsResult (
     @ColumnInfo(name = "status")
     var status: String?,
 
-    @ColumnInfo(name = "nameEst")
-    var nameEst: String?
+    @ColumnInfo(name = "idEst")
+    var idEst: String?
 
 ) : Parcelable
