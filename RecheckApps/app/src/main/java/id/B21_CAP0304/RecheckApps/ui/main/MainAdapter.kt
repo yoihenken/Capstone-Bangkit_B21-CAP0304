@@ -1,6 +1,7 @@
 package id.B21_CAP0304.RecheckApps.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import id.B21_CAP0304.RecheckApps.R
 import id.B21_CAP0304.RecheckApps.databinding.ItemsDetailBinding
 import id.B21_CAP0304.RecheckApps.model.ItemsDetail
+import id.B21_CAP0304.RecheckApps.ui.detail.DetailActivity
 
 class MainAdapter(
     private val listData : List<ItemsDetail>,
@@ -30,6 +32,12 @@ class MainAdapter(
             tvTitle.text = data.title
             tvCountItems.text = data.count.toString()
             tvDate.text = data.date
+
+            itemsDetail.setOnClickListener {
+                context.startActivity(Intent(context, DetailActivity::class.java).apply {
+                    putExtra(DetailActivity.EXTRA_DATA, data)
+                })
+            }
          }
     }
 

@@ -27,9 +27,12 @@ class NewesActivity : AppCompatActivity() {
             recycleData(it)
         }
 
-        binding.btnAdd.setOnClickListener {
-            model.addCountItems(curTotalItems)
-            Log.d("NewesAct", "Add Items: ${curTotalItems}")
+        binding.apply {
+
+            btnAdd.setOnClickListener {
+                model.addCountItems(curTotalItems)
+                Log.d("NewesAct", "Add Items: ${curTotalItems}")
+            }
         }
 
     }

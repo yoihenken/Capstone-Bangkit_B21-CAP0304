@@ -6,18 +6,23 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+
 @Entity
 @Parcelize
-data class ItemsDetail(
+data class ItemsResult (
     @PrimaryKey(autoGenerate = true)
     var id : Int? = null,
 
     @ColumnInfo(name = "title")
     var title : String? = null,
 
-    @ColumnInfo(name = "count")
-    var count : Int? = null,
+    @ColumnInfo(name = "price")
+    var price : Int? = null,
 
-    @ColumnInfo(name = "date")
-    var date : String? = null
+    @ColumnInfo(name = "status")
+    var status: String? = null,
+
+    @ColumnInfo(name = "idEst")
+    var idEst: String? = null
+
 ) : Parcelable
