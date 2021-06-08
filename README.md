@@ -1,6 +1,9 @@
 # RecheckApps - Machine Learning for Budget Mark-up Detection
 ## Bangkit 2021 Capstone Project - B21-CAP0304
 
+
+Recheck Apps is an application to estimate the price of an item. If the proposed price is “Overprice” then the proposed price exceeds the market price. Conversely, if the status is “Not Overprice” then the proposed price has an average market price
+
 ### Background
 Have you looked at the news today? Where is the social grant more dangerous than the COVID-19? Where people can't get their social grant in good accuracy? Where is our government taking 100 billion as their mattress to sleep? In a world with millions of data, we want to re-establish our government financial system by reducing the budget plan's chance of being marked-up. In the steps of our government being transparent, we can implement this system by allowing our representatives to check again the proposed budget plan if there is anything that is beyond the allowed range. Doubt the impact? How many children can we help with 100 billion from a corruption of COVID-19 social grant? Seems small yet impactful for people in need.
 
