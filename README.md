@@ -11,3 +11,21 @@ Have you looked at the news today? Where is the social grant more dangerous than
 4. C2832586 - Ainun Ilma
 5. M0020057 - Luthfi Eko Trinowo
 6. M0020058 - Ismail Faizal Aziz
+
+
+## Built Apps
+IDE : Android Studio
+Programming Language : Kotlin
+Library : 
+ - Room : For local database
+ - Retrofit : For call APIs
+ - Android Lifecycle : Manage Apps Architecture
+
+
+
+## Endpoint API
+
+|Method | Endpoint | Body | Description | Return
+|--|--|--|--|--|
+| Get | /getitems | - | Get list item that available to test | Json Array Object with attribute item name and item brand
+| Post| /predict | { itemName : String, brand : String, price : Int } | Post list item with price to test | 0 = Not Overprice, 1 = Overprice
