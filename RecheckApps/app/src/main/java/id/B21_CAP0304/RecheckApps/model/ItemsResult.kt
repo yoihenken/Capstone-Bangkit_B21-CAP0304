@@ -16,6 +16,9 @@ data class ItemsResult (
     @ColumnInfo(name = "title")
     var title : String? = null,
 
+    @ColumnInfo(name = "brand")
+    var brand : String? = null,
+
     @ColumnInfo(name = "price")
     var price : Int? = null,
 
@@ -23,6 +26,6 @@ data class ItemsResult (
     var status: String? = null,
 
     @ColumnInfo(name = "idEst")
-    var idEst: String? = null
+    var idEst: Int? = null
 
 ) : Parcelable

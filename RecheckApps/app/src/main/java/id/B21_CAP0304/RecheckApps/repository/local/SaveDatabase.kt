@@ -25,18 +25,5 @@ abstract class SaveDatabase : RoomDatabase() {
                     .build()
             return instance!!
         }
-
-        fun getInstanceMainThread(context: Context) : SaveDatabase {
-            return Room.databaseBuilder(
-                context.applicationContext, SaveDatabase::class.java, "DB_RECHECK"
-            )
-                .allowMainThreadQueries()
-                .build()
-        }
-
-
-
-
-
     }
 }

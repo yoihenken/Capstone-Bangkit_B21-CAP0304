@@ -1,6 +1,7 @@
 package id.B21_CAP0304.RecheckApps.ui.newes
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,13 +40,16 @@ class NewesAdapter(
         holder.bindView(listItem, listData[position]) { type, itemData ->
             when (type) {
                 UPDATE -> {
-                    val idx = listData.indexOfFirst { it.id == itemData.id }
-                    listData[idx] = itemData
+//                    val idx = listData.indexOfFirst { it.id == itemData.id }
+//                    Log.d("TAG", "onBindViewHolder: $idx")
+//                    Log.d("TAG", "onBindViewHolder: ${listData}${itemData}")
+//                    listData[idx] = itemData
                     //notifyItemChanged(position)
                 }
                 DELETE -> {
-                    listData.remove(itemData)
-                    notifyDataSetChanged()
+                    val idx = listData.indexOfFirst { it.id == itemData.id }
+                    listData.removeAt(idx)
+                    notifyItemRemoved(idx)
                 }
             }
         }
@@ -76,9 +80,9 @@ class NewesAdapter(
                 spnItemName.setOnItemClickListener { _, _, position, _ ->
                     val itemData = listItem[position]
                     if (etPrice.text.isNullOrBlank()) {
-                        itemData.price = 0
+                        itemData.price = 0.toBigInteger()
                     } else {
-                        itemData.price = Integer.parseInt(etPrice.text.toString())
+                        itemData.price = Integer.parseInt(etPrice.text.toString()).toBigInteger()
                     }
                     dataItem.itemName = itemData.itemName
                     dataItem.brand = itemData.brand
@@ -89,9 +93,9 @@ class NewesAdapter(
                 adapter.filter.filter(null)
                 etPrice.doAfterTextChanged {
                     if (!etPrice.text.isNullOrBlank() && dataItem.price != etPrice.text.toString()
-                            .toInt()
+                            .toBigInteger()
                     ) {
-                        dataItem.price = etPrice.text.toString().toInt()
+                        dataItem.price = etPrice.text.toString().toBigInteger()
                         callback(TYPE.UPDATE, dataItem)
                     }
                 }

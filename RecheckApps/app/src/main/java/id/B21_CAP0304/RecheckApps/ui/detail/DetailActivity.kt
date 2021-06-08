@@ -39,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
     private fun recycleData(data: List<ItemsResult>){
         binding.rvDetailItem.apply {
             layoutManager = LinearLayoutManager(this@DetailActivity)
-            // adapter = DetailAdapter(data, this@DetailActivity)
+            adapter = DetailAdapter(data, this@DetailActivity)
         }
     }
     

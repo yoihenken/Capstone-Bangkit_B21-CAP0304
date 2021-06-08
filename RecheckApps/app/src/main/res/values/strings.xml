@@ -7,4 +7,5 @@
     <string name="name_estimation">Name Estimation</string>
     <string name="input_price">Input Price</string>
     <string name="select_items">Select Items</string>
+    <string name="fill_the_items">All items must be filled</string>
 </resources>

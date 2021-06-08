@@ -8,4 +8,5 @@
     <string name="name_estimation">Nama Estimasi</string>
     <string name="input_price">Masukkan Harga</string>
     <string name="select_items">Pilih Barang</string>
+    <string name="fill_the_items">Semua item harus diisi</string>
 </resources>
