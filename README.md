@@ -15,7 +15,9 @@ Have you looked at the news today? Where is the social grant more dangerous than
 
 ## Built Apps
 IDE : Android Studio
+
 Programming Language : Kotlin
+
 Library : 
  - Room : For local database
  - Retrofit : For call APIs
