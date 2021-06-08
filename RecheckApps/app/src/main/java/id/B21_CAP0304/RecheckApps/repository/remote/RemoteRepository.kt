@@ -34,7 +34,7 @@ object RemoteRepository {
     fun predict(dataItems : GetItemResponse, callback : (List<Int>) -> Unit){
         RetrofitClient.services().predict(dataItems).enqueue(object : Callback<List<Int>> {
             override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
-                //callback(response.body()!!)
+                callback(response.body()!!)
             }
 
             override fun onFailure(call: Call<List<Int>>, t: Throwable) {

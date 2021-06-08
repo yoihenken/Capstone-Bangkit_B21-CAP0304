@@ -11,8 +11,12 @@ import id.B21_CAP0304.RecheckApps.ui.main.MainAdapter
 
 class DetailActivity : AppCompatActivity() {
 
+    companion object {
+        const val ITEM_DETAIL = "itemdetail"
+    }
+
     private lateinit var binding: ActivityDetailBinding
-    private lateinit var dataItemsDetail : ItemsDetail
+    private var dataItemsDetail : ItemsDetail? = null
     private val model : DetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,18 +25,18 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // get data intent
-        dataItemsDetail = intent.getParcelableExtra<ItemsDetail>(EXTRA_DATA) ?: ItemsDetail()
+        dataItemsDetail = intent.getParcelableExtra(ITEM_DETAIL)
 
         binding.apply {
             appBar.apply {
-                title = dataItemsDetail.title
+                title = dataItemsDetail?.title
                 setNavigationOnClickListener { finish() }
             }
-
-            dataItemsDetail.id?.let { model.getSavedResult(application, this@DetailActivity, it) }
             model.savedResult.observe(this@DetailActivity){
                 recycleData(it)
             }
+            dataItemsDetail?.id?.let { model.getSavedResult(application, this@DetailActivity, it) }
+
         }
     }
 
@@ -42,8 +46,5 @@ class DetailActivity : AppCompatActivity() {
             adapter = DetailAdapter(data, this@DetailActivity)
         }
     }
-    
-    companion object{
-        var EXTRA_DATA = "extra_data"
-    }
+
 }

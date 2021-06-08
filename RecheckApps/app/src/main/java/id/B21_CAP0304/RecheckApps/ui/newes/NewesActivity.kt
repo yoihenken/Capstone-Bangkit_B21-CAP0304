@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_newes.*
 
 class NewesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewesBinding
-    private val model: NewesViewModel by viewModels()
+    private val model: NewesViewModel by viewModels { NewesViewModelFactory(application) }
     var isLoaded = false
     lateinit var adapter: NewesAdapter
 
@@ -29,18 +29,17 @@ class NewesActivity : AppCompatActivity() {
             finish()
         }
 
-        model.itemDataRequest.observe(this) {
-            if (isLoaded) {
-                updateRecyclerViewData(it)
-            }
-        }
-
         model.itemData.observe(this) {
             if (!it.isNullOrEmpty()) {
                 initRecyclerview(it)
                 isLoaded = true
             }
 
+        }
+
+        model.onSave().observe(this) {
+            startActivity(Intent(this@NewesActivity, DetailActivity::class.java).putExtra(DetailActivity.ITEM_DETAIL, it))
+            finish()
         }
 
         binding.apply {
@@ -60,8 +59,12 @@ class NewesActivity : AppCompatActivity() {
                 isValid = if (dataItems.isEmpty()) false else isValid
                 isValid = if (inputNameEstimation.text.isNullOrBlank()) false else isValid
                 if (isValid) {
-                    model.predict(GetItemResponse(adapter.getitem()))
-                    startActivity(Intent(this@NewesActivity, DetailActivity::class.java))
+                    model.predict(
+                        inputNameEstimation.text.toString(),
+                        GetItemResponse(adapter.getitem()),
+                        this@NewesActivity
+                    )
+
                 } else {
                     Log.d("TAG", "onCreate: $dataItems")
                     Toast.makeText(
@@ -73,11 +76,6 @@ class NewesActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun updateRecyclerViewData(itemData: MutableList<ItemDataResponse>) {
-        Log.d("TAG", itemData.toString())
-        //adapter.updateData(itemData.toList())
     }
 
     private fun initRecyclerview(itemData: List<ItemDataResponse>) {

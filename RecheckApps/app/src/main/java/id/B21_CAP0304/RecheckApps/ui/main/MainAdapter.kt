@@ -35,7 +35,7 @@ class MainAdapter(
 
             itemsDetail.setOnClickListener {
                 context.startActivity(Intent(context, DetailActivity::class.java).apply {
-                    putExtra(DetailActivity.EXTRA_DATA, data)
+                    putExtra(DetailActivity.ITEM_DETAIL, data)
                 })
             }
          }

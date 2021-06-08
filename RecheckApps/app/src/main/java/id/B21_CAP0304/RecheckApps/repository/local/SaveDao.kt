@@ -13,25 +13,26 @@ interface SaveDao {
 
     //ItemsDetail
     @Insert
-    fun insertItemsDetail(itemsDetail: ItemsDetail)
+    suspend fun insertItemsDetail(itemsDetail: ItemsDetail)
 
     @Delete
-    fun deleteItemsDetail(itemsDetail: ItemsDetail)
-
+    suspend fun deleteItemsDetail(itemsDetail: ItemsDetail)
 
     @Query("select * from ItemsDetail")
     fun getAllItemsDetail(): LiveData<List<ItemsDetail>>
 
-    @Query("select * from ItemsDetail where id = :id")
-    fun getItemsDetail(id : Int): LiveData<ItemsDetail>
+    @Query("select * from ItemsDetail where title = :title AND date = :date")
+    fun getItemsDetail(title: String, date: String): LiveData<List<ItemsDetail>>
 
-
-    //ItemsResult
+    // ItemsResult
     @Insert
-    fun insertItemsResult(itemsResult: ItemsResult)
+    suspend fun insertItemsResult(itemsResult: ItemsResult)
+
+    @Insert
+    suspend fun insertItemsResultBatch(itemsResult: List<ItemsResult>)
 
     @Delete
-    fun deleteItemsResult(itemsResult: ItemsResult)
+    suspend fun deleteItemsResult(itemsResult: ItemsResult)
 
 
     @Query("select * from ItemsResult where idEst = :idESt")

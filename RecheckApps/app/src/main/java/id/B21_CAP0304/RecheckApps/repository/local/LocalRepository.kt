@@ -1,9 +1,9 @@
 package id.B21_CAP0304.RecheckApps.repository.local
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import id.B21_CAP0304.RecheckApps.model.ItemsDetail
 import id.B21_CAP0304.RecheckApps.model.ItemsResult
+import kotlinx.coroutines.flow.flow
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -11,39 +11,38 @@ class LocalRepository(application: Application) {
 
     private var saveDao: SaveDao
     private val database = SaveDatabase.getInstance(application)
-    private val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 
     init {
         saveDao = database.saveDao()
     }
 
     //Items Detail
-
-    fun saveItemResult(itemsResult: ItemsResult) {
-        executorService.execute {
-            saveDao.insertItemsResult(itemsResult)
-        }
+    suspend fun saveItemResult(itemsResult: ItemsResult) {
+        saveDao.insertItemsResult(itemsResult)
     }
 
-    fun saveItemDetail(itemsDetail: ItemsDetail) {
-        executorService.execute {
-            saveDao.insertItemsDetail(itemsDetail)
-        }
+    suspend fun saveItemResultBatch(itemsResult: List<ItemsResult>) {
+        saveDao.insertItemsResultBatch(itemsResult)
     }
 
-    fun deleteItemResult(itemsResult: ItemsResult) {
-        executorService.execute {
-            saveDao.deleteItemsResult(itemsResult)
-        }
+    suspend fun saveItemDetail(itemsDetail: ItemsDetail) {
+        saveDao.insertItemsDetail(itemsDetail)
     }
 
-    fun deleteItemDetail(itemsDetail: ItemsDetail) {
-        executorService.execute {
-            saveDao.deleteItemsDetail(itemsDetail)
-        }
+    suspend fun deleteItemResult(itemsResult: ItemsResult) {
+        saveDao.deleteItemsResult(itemsResult)
     }
 
-    fun getAllItemsResult(id: Int): LiveData<List<ItemsResult>> = saveDao.getAllItemsResult(id)
-    fun getAllItemsDetail(): LiveData<List<ItemsDetail>> = saveDao.getAllItemsDetail()
-    fun getItemsDetail(id: Int): LiveData<ItemsDetail> = saveDao.getItemsDetail(id)
+    suspend fun deleteItemDetail(itemsDetail: ItemsDetail) {
+        saveDao.deleteItemsDetail(itemsDetail)
+    }
+
+    suspend fun getAllItemsResult(id: Int) = flow { emit(saveDao.getAllItemsResult(id)) }
+
+    suspend fun getAllItemsDetail() = flow {
+        emit(saveDao.getAllItemsDetail())
+    }
+    suspend fun getItemsDetail(title: String, date: String) = flow {
+        emit(saveDao.getItemsDetail(title, date))
+    }
 }

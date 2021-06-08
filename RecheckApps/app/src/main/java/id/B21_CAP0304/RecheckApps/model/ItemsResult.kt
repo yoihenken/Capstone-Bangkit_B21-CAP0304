@@ -20,7 +20,7 @@ data class ItemsResult (
     var brand : String? = null,
 
     @ColumnInfo(name = "price")
-    var price : Int? = null,
+    var price : String? = null,
 
     @ColumnInfo(name = "status")
     var status: String? = null,
