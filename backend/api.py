@@ -32,7 +32,7 @@ def hello_world():
 
 @app.route("/getItems", methods=["GET"])
 def getItems():
-    response_json = {
+    data = {
         "data": [
             {
                 "itemName": "15.4 MacBook Pro with Touch Bar (Late 2016, Space Gray)",
@@ -76,7 +76,12 @@ def getItems():
             },
         ]
     }
-    return json.dumps(response_json)
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -104,10 +109,15 @@ def predict():
             res.extend(predictions)
         except:
             print("prediction has failed.")
-    response_json = {
+    data = {
         "data": res
     }
-    return json.dumps(response_json)    
+    response = app.response_class(
+        response=json.dumps(res),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
